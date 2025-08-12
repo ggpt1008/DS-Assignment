@@ -1,0 +1,90 @@
+#include <iostream>
+using namespace std;
+
+int arr[100],n = 0; // max array size already definied at starting. 
+
+void create(){
+    cout <<"Enter number of elements: ";
+    cin >> n;
+    cout <<"Enter elements:\n";
+    for(int i = 0; i < n; i++) // take the elements as input in the array
+        cin >> arr[i];
+}
+
+void display(){
+    if (n==0){ // first check if array exist
+        cout <<"Array is empty\n";
+        return;
+    }
+    cout << "The Array is: ";
+    for(int i=0; i<n; i++) // print the array
+        cout <<arr[i] << " ";
+    cout << endl;
+}
+
+void insertElement() {
+    int pos,val;
+    cout << "Enter index: ";
+    cin >> pos;
+    cout << "Enter value: ";
+    cin >> val;
+    for (int i=n; i>=pos;i--)
+        arr[i+1] = arr[i]; // shifting current value to next index
+    arr[pos] = val;
+    n++; // array size increased by 1
+}
+
+void deleteElement() {
+    int pos;
+    cout <<"Enter index to delete: ";
+    cin >> pos;
+    for (int i = pos; i < n; i++)
+        arr[i] = arr[i + 1]; 
+    n--; // reducing array size  because of deletion
+}
+
+void linearSearch() {
+    int val, found = 0;
+    cout << "Enter value to search: ";
+    cin >> val;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == val) {
+            cout << "Found at Index " << i << endl;
+            found = 1;
+            break;
+        }
+    }
+    if (found==0) cout << "Not found\n";
+}
+
+int main() {
+    int choice;
+    while (true) {
+        cout << "\n--- MENU ---\n";
+        cout << "1. CREATE\n2. DISPLAY\n3. INSERT\n4. DELETE\n5. LINEAR SEARCH\n6. EXIT\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) { // using switch case for calling different functions
+            case 1:
+                create(); 
+                break;
+            case 2: 
+                display();
+                break;
+            case 3: 
+                insertElement();
+                break;
+            case 4: 
+                deleteElement();
+                break;
+            case 5:
+                linearSearch(); 
+                break;
+            case 6:
+                return 0; // terminates the program
+            default:
+                cout << "Invalid choice!\n";
+        }
+    }
+}
