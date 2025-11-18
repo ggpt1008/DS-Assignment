@@ -26,7 +26,7 @@ int main() {
         for (int j = i + 1; j < n; j++) {
             if (abs(arr[i] - arr[j]) == k) {
                 count++;
-                cout << "(" << arr[i] << ", " << arr[j] << ")\n";   // optional: shows the pair
+                cout << "(" << arr[i] << ", " << arr[j] << ")\n";  
             }
         }
     }
@@ -35,3 +35,4 @@ int main() {
 
     return 0;
 }
+
